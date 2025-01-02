@@ -1,6 +1,6 @@
 # Yonkie Warrior
 
-## Want Drugs? - Juego en Python con Pygame
+## Want Drugs? - Juego creado con Python y Pygame
 
 ![want-drugs](https://github.com/user-attachments/assets/e4db4f47-ef83-4e8b-9ca1-f650c1e3ce06)
 
