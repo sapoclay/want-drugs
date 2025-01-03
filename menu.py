@@ -2,9 +2,57 @@ import pygame
 import sys
 from config import ANCHO, ALTO, RUTAS
 
+# Función para mostrar los créditos
+def mostrar_creditos(pantalla):
+    # Cargar la imagen para los créditos
+    try:
+        imagen_creditos = pygame.image.load(RUTAS["creditos_imagen"])
+        imagen_creditos = pygame.transform.scale(imagen_creditos, (300, 300))  # Tamaño ajustado
+    except pygame.error as e:
+        print(f"Error al cargar la imagen de créditos: {e}")
+        pygame.quit()
+        sys.exit()
+
+    fuente_titulo = pygame.font.SysFont(None, 48)
+    fuente_pequeña = pygame.font.SysFont(None, 32)
+
+    texto_creditos1 = "Desarrollado por:"
+    texto_creditos2 = "entreunosyceros"
+    texto_instrucciones = "Pulsa Esc para volver al menú"
+
+    while True:
+        pantalla.fill((0, 0, 0))  # Fondo negro
+
+        # Mostrar la imagen centrada
+        ancho_img, alto_img = imagen_creditos.get_size()
+        pantalla.blit(imagen_creditos, ((ANCHO - ancho_img) // 2, (ALTO - alto_img) // 2 - 100))
+
+        # Mostrar el texto principal
+        texto1 = fuente_titulo.render(texto_creditos1, True, (255, 255, 255))
+        texto2 = fuente_titulo.render(texto_creditos2, True, (255, 255, 255))
+        ancho_texto1, alto_texto1 = texto1.get_size()
+        ancho_texto2, alto_texto2 = texto2.get_size()
+        pantalla.blit(texto1, ((ANCHO - ancho_texto1) // 2, (ALTO + alto_img) // 2 - 50))
+        pantalla.blit(texto2, ((ANCHO - ancho_texto2) // 2, (ALTO + alto_img) // 2))
+
+        # Mostrar el texto de instrucciones
+        texto3 = fuente_pequeña.render(texto_instrucciones, True, (255, 255, 0))
+        ancho_texto3, alto_texto3 = texto3.get_size()
+        pantalla.blit(texto3, ((ANCHO - ancho_texto3) // 2, (ALTO + alto_img) // 2 + alto_texto2 + 20))
+
+        pygame.display.flip()
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_ESCAPE:  # Volver al menú principal
+                    return
+
 # Función para mostrar el menú inicial
 def mostrar_menu_inicial(pantalla):
-    opciones = ["Empezar a jugar", "Ver repositorio en GitHub", "Salir"]
+    opciones = ["Empezar a jugar", "Ver repositorio en GitHub", "Créditos", "Salir"]
     opcion_seleccionada = 0  # Índice de la opción seleccionada
 
     # Cargar la imagen de fondo
@@ -42,6 +90,8 @@ def mostrar_menu_inicial(pantalla):
                     elif opcion_seleccionada == 1:  # Ver repositorio en GitHub
                         import webbrowser
                         webbrowser.open("https://github.com/sapoclay/want-drugs")
-                    elif opcion_seleccionada == 2:  # Salir
+                    elif opcion_seleccionada == 2:  # Créditos
+                        mostrar_creditos(pantalla)
+                    elif opcion_seleccionada == 3:  # Salir
                         pygame.quit()
                         sys.exit()

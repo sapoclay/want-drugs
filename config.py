@@ -24,7 +24,8 @@ RUTAS = {
     "vitamina1": 'assets/Img/vitamina1.png',
     "obstaculo": 'assets/Img/obstaculo.png',
     "fondo_menu": 'assets/Img/fondo_menu.jpeg',
-    "carga": 'assets/Img/carga.jpeg'
+    "carga": 'assets/Img/carga.jpeg',
+    "creditos_imagen": 'assets/Img/personaje_creditos.png',
 }
 
 # Probabilidades y penalizaciones
