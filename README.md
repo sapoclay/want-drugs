@@ -53,6 +53,7 @@ assets/
 │   ├── obstaculo.png
 │   ├── personaje.png
 │   ├── personaje_alternativo.png
+│   ├── personaje_creditos.png
 │   ├── vitamina1.png
 │   └── vitamina.png
 ├── Music/
