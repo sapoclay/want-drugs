@@ -14,7 +14,7 @@
 
 * Menú de inicio. Desde ahí se puede "Empezar a jugar", "Ver el repositorio en GitHub" o "Salir".
 
-![menu-yonkie-warrior](https://github.com/user-attachments/assets/faab5b9c-a24a-4aa8-b3c4-d635a9baa67d)
+![yonki-warrior-menu](https://github.com/user-attachments/assets/eb0394c6-e0bb-4522-9169-4371d1850154)
 
 * Las pastillas redondas dan 2 puntos, las alargadas solo 1. Si el usuario recoge la mierda, se le restarán 2 puntos al puntuaje total, por lo que el usuario deberá dejarla pasar.
 
