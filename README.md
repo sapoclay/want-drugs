@@ -34,6 +34,8 @@
 
 * Sistema de ranking: Guarda las puntuaciones más altas con el nombre del jugador.
 
+* Desde el menú principal ahora se puede visitar este repositorio en GitHub del proyecto o ver las 5 puntuaciones más altas registradas.
+
 * Opciones de reinicio: Al final del juego, puedes elegir volver a jugar.
 
 ## Requisitos del Sistema
@@ -51,6 +53,7 @@ assets/
 │   ├── background.png
 │   ├── carga.jpeg
 │   ├── obstaculo.png
+│   ├── fondo_menu.jpeg
 │   ├── personaje.png
 │   ├── personaje_alternativo.png
 │   ├── personaje_creditos.png
