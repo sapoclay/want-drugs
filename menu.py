@@ -1,6 +1,8 @@
 import pygame
 import sys
 from config import ANCHO, ALTO, RUTAS
+from ranking import cargar_ranking, mostrar_ranking
+
 
 # Función para mostrar los créditos
 def mostrar_creditos(pantalla):
@@ -50,9 +52,27 @@ def mostrar_creditos(pantalla):
                 if evento.key == pygame.K_ESCAPE:  # Volver al menú principal
                     return
 
+# Función para mostrar un mensaje en pantalla
+def mostrar_mensaje(pantalla, mensaje, color=(255, 255, 255)):
+    pantalla.fill((0, 0, 0))
+    fuente = pygame.font.SysFont(None, 48)
+    texto = fuente.render(mensaje, True, color)
+    ancho_texto, alto_texto = texto.get_size()
+    pantalla.blit(texto, ((ANCHO - ancho_texto) // 2, (ALTO - alto_texto) // 2))
+    pygame.display.flip()
+    pygame.time.delay(3000)
+
+# Función para mostrar el ranking o un mensaje si no hay datos
+def ver_ranking(pantalla):
+    ranking = cargar_ranking()
+    if not ranking:
+        mostrar_mensaje(pantalla, "No hay puntuaciones registradas.", (255, 0, 0))
+    else:
+        mostrar_ranking(pantalla)
+
 # Función para mostrar el menú inicial
 def mostrar_menu_inicial(pantalla):
-    opciones = ["Empezar a jugar", "Ver repositorio en GitHub", "Créditos", "Salir"]
+    opciones = ["Empezar a jugar", "Ver puntuaciones", "Ver repositorio en GitHub", "Créditos", "Salir"]
     opcion_seleccionada = 0  # Índice de la opción seleccionada
 
     # Cargar la imagen de fondo
@@ -87,11 +107,13 @@ def mostrar_menu_inicial(pantalla):
                 elif evento.key == pygame.K_RETURN:  # Seleccionar opción
                     if opcion_seleccionada == 0:  # Empezar a jugar
                         return
-                    elif opcion_seleccionada == 1:  # Ver repositorio en GitHub
+                    elif opcion_seleccionada == 1:  # Ver Ranking
+                        ver_ranking(pantalla)
+                    elif opcion_seleccionada == 2:  # Ver repositorio en GitHub
                         import webbrowser
                         webbrowser.open("https://github.com/sapoclay/want-drugs")
-                    elif opcion_seleccionada == 2:  # Créditos
+                    elif opcion_seleccionada == 3:  # Créditos
                         mostrar_creditos(pantalla)
-                    elif opcion_seleccionada == 3:  # Salir
+                    elif opcion_seleccionada == 4:  # Salir
                         pygame.quit()
                         sys.exit()
